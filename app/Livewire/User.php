@@ -6,7 +6,23 @@ use App\Models\User as ModelsUser;
 use Livewire\Component;
 
 class User extends Component
-{    
+{   
+    
+
+    public bool $screenTooSmall = false;
+
+    protected $listeners = ['screenTooSmall', 'screenOkay'];
+
+    public function screenTooSmall()
+    {
+        $this->screenTooSmall = true;
+    }
+
+    public function screenOkay()
+    {
+        $this->screenTooSmall = false;
+    }
+    
     public $pilihanMenu = 'lihat';
     public $nama;
     public $email;

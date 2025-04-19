@@ -200,9 +200,47 @@
         }
     </script>
 
-    @livewire('screen-check')
+    <!-- Pastikan sudah include Bootstrap JS -->
+
+    <div class="modal fade" id="resolutionWarningModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="resolutionWarningLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resolutionModalLabel">Resolusi layar terlalu kecil</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Mohon gunakan perangkat dengan resolusi minimal <strong>1024px</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" iintegrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const modalEl = new bootstrap.Modal(document.getElementById('resolutionWarningModal'), {
+                backdrop: 'static',
+                keyboard: false
+            });
+
+            function checkResolution() {
+                const width = window.innerWidth;
+                if (width < 1024) {
+                    modalEl.show();
+                } else {
+                    modalEl.hide();
+                }
+            }
+
+            checkResolution();
+            window.addEventListener('resize', checkResolution);
+        });
+    </script>
 
     
+
     
     
 </body>

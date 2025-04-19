@@ -9,6 +9,20 @@ use Livewire\Component;
 
 class Transaksi extends Component
 {
+    public bool $screenTooSmall = false;
+
+    protected $listeners = ['screenTooSmall', 'screenOkay'];
+
+    public function screenTooSmall()
+    {
+        $this->screenTooSmall = true;
+    }
+
+    public function screenOkay()
+    {
+        $this->screenTooSmall = false;
+    }
+
     public $kode, $total, $kembalian, $totalSemuaBelanja;
     public $bayar = 0;
     public $transaksiAktif;

@@ -11,6 +11,20 @@ use Livewire\WithFileUploads;
 
 class Produk extends Component
 {
+    public bool $screenTooSmall = false;
+
+    protected $listeners = ['screenTooSmall', 'screenOkay'];
+
+    public function screenTooSmall()
+    {
+        $this->screenTooSmall = true;
+    }
+
+    public function screenOkay()
+    {
+        $this->screenTooSmall = false;
+    }
+
     use WithFileUploads;
     public $pilihanMenu = 'lihat';
     public $nama;
